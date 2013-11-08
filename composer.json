@@ -1,0 +1,17 @@
+{
+    "name": "kkuetnet/sharindata-client-api",
+    "description": "Sharindata WebService",
+    "keywords": ["webservice","sharindata"],
+    "type": "vendor",
+    "license": "Commercial",
+    "authors": [
+        {
+            "name": "Anthony GROSS",
+            "email": "anthony_gross@kkuet.net"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "KkuetNet\\SharindataClientApi": "" }
+    },
+    "target-dir": "KkuetNet/SharindataClientApi"
+}
