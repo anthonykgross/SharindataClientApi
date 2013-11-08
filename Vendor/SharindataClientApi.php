@@ -57,9 +57,9 @@ class SharindataClientApi{
     }
     
     private function getCurl(){
-        $auth_wsse          = new \KkuetNet\SharindataBundle\Vendor\WsseAuth(self::api_url_create_token."?_username=".$this->username."&_password=".$this->password);
+        $auth_wsse          = new \KkuetNet\SharindataClientApi\Vendor\WsseAuth(self::api_url_create_token."?_username=".$this->username."&_password=".$this->password);
         
-        return new \KkuetNet\SharindataBundle\Vendor\BasicCurl(array(
+        return new \KkuetNet\SharindataClientApi\Vendor\BasicCurl(array(
             'X-WSSE : '.$auth_wsse->getToken(),
             'Authorization : WSSE profile="UsernameToken"',
             'Accept : application/json',
