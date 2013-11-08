@@ -24,11 +24,12 @@ Composer will install the library to your project's `vendor/kkuetnet/sharindata-
 
 ## How to use
 
+Request :
 ```php
 $response = new \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi("your_login", "your_password");
-var_dump($response->getCountry("fr"));
+var_dump($response->getCountry("be"));
 ```
-
+JSON Response : 
 ```json
 {
     "id": 3, 
