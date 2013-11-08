@@ -1,6 +1,6 @@
 <?php
 
-namespace KkuetNet\SharindataBundle\Vendor;
+namespace KkuetNet\SharindataClientApi\Vendor;
 
 class SharindataClientApi{
     
