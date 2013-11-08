@@ -34,8 +34,7 @@ JSON Response :
 {
     "id": 3, 
     "iso": "BE", 
-    "call_prefix": 
-    "32", 
+    "call_prefix": "32", 
     "contains_states": false, 
     "need_identification_number": false, 
     "need_zip_code": true, 
