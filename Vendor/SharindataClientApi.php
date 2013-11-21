@@ -56,6 +56,19 @@ class SharindataClientApi{
         return $this->getCurl()->doGet(self::api_url."data/zones/".$code);
     }
     
+    public function getAllColors($image_path){
+        $post = array('image' => '@'.$image_path);
+        return $this->getCurl()->doPost(self::api_url."tool/images/allcolors", $post);
+    }
+    
+    public function getMainsColors($image_path, $nbColor = null){
+        $post = array('image' => '@'.$image_path);
+        if($nbColor){
+            $post['nbColor'] = $nbColor;
+        }
+        return $this->getCurl()->doPost(self::api_url."tool/images/maincolors", $post);
+    }
+    
     private function getCurl(){
         $auth_wsse          = new \KkuetNet\SharindataClientApi\Vendor\WsseAuth(self::api_url_create_token."?_username=".$this->username."&_password=".$this->password);
         

@@ -75,4 +75,29 @@ class SharindataClientApiTest extends \PHPUnit_Framework_TestCase {
         $data= $sca->getZone("europe");
         $this->assertTrue($data->code==200);
     }
+    public function testGetMainColor(){
+        $sca = new \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi("kkuet12@live.fr", "050688");
+        //file_put_contents(__DIR__."/test.png", file_get_contents("http://sharindata.com/Sharindata48x48.png"));
+        $data= $sca->getMainsColors(__DIR__."/test.png");
+        $this->assertTrue(count(json_decode($data->response, true))==2);
+        $this->assertTrue($data->code==200);
+        
+        //file_put_contents(__DIR__."/test.gif", file_get_contents("https://lh3.googleusercontent.com/-5qJehnsWXpE/UkqXBiQGv9I/AAAAAAAAAmI/lsIv9H9TX_g/w800-h800/starbucks-coffee-logo.gif"));
+        $data= $sca->getMainsColors(__DIR__."/test.gif");
+        $this->assertTrue(count(json_decode($data->response, true))==2);
+        $this->assertTrue($data->code==200);
+        
+        //file_put_contents(__DIR__."/test.jpg", file_get_contents("http://upload.wikimedia.org/wikipedia/fr/c/ca/Bear_Rides_logo.JPG"));
+        $data= $sca->getMainsColors(__DIR__."/test.jpg", 7);
+        $this->assertTrue(count(json_decode($data->response, true))==7);
+        $this->assertTrue($data->code==200);
+        
+        //file_put_contents(__DIR__."/test.html", file_get_contents("http://www.w3.org/Style/Examples/011/firstcss.fr.html"));
+        $data= $sca->getMainsColors(__DIR__."/test.html");
+        $this->assertTrue($data->code==500);
+        
+        $data= $sca->getAllColors(__DIR__."/test.png");
+        $this->assertTrue(count(json_decode($data->response, true))==501);
+        $this->assertTrue($data->code==200);
+    }
 }

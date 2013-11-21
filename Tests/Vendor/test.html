@@ -1,0 +1,888 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Editors & translators, please, edit firstcss.en.tmpl, not .html -->
+
+<html lang=fr>
+ <head>
+  <title>Débuter avec HTML + CSS</title>
+
+  <link href="../../threepart-f.css" rel=stylesheet type="text/css">
+  <style type="text/css">
+  @media screen, print, projection, handheld {
+    .hide {display: none !important}
+  }
+  object {border: thin dotted; width: 35em; height: 30em}
+  div.figure p {
+      text-align: center;
+      font-style: italic;
+      font-size: smaller;
+      text-indent: 0 }
+  div.figure img, div.figure object {max-width: 90%}
+  pre {margin: 1em 0; background: #DDD; padding: 0.5em 1.5em}
+  pre strong {color: red}
+  img.illustration {float: right; margin: 0.5em 0 0.5em 0.5em}
+  img.sign {float: left; max-width: 4.5em; margin: 0 0.5em 0.5em -5em}
+  div.advanced {margin: 1em 0 1em 5em; font-size: smaller}
+  abbr {speak: spell-out}
+  div.advanced {cue: url(ting.mp3) url(tingting.mp3)}
+  #translations a + a:before, #language p:before  {content: "\2022\A0"}
+  #language, #translations {font-style: italic; font-size: small}
+  #language p, #translations li {display: inline}
+  #translations li::before{content: " \2022  "}
+</style>
+  <link href="mailto:bert@w3.org%20(Bert%20Bos)" rel=author>
+  <link href="/" rel=home title=W3C>
+  <link href="../../CSS/" rel=top title=CSS>
+  <link href="../../../Help/siteindex" rel=index title="Site index">
+  <link href="http://search.w3.org/" rel=search title=Search>
+  <link href="../../../Consortium/Legal/ipr-notice.html#Copyright"
+   rel=copyright title=Copyright>
+  <link href="http://www.ich-lerne-css.de/Style/Examples/011/firstcss/"
+   hreflang=de rel=alternate title=Deutsch>
+  <link href=firstcss.en.html hreflang=en rel=alternate title=English>
+  <link href=firstcss.es.html hreflang=es rel=alternate
+   title="Español">
+  <link href=firstcss.fr.html hreflang=fr rel=alternate
+   title="Français">
+  <link
+   href="http://www.erasparsa.com/w3/Style/Examples/011/firstcss.id.html"
+   hreflang=id rel=alternate title="Bahasa Indonesia">
+  <link
+   href="http://www.osservatoriosullacomunicazione.com/w3c/firstcss.html"
+   hreflang=it rel=alternate title=Italiano>
+  <link href=firstcss.nl.html hreflang=nl rel=alternate
+   title=Nederlands>
+  <link
+   href="http://www.tlumaczenia-angielski.info/w3c/css/css-beginner/firstcss.pl.html"
+   hreflang=pl rel=alternate title=Polski>
+  <link href="http://www.maujor.com/w3ctuto/firstcss.html" hreflang=pt
+   rel=alternate title="Português (Brasileiro)">
+  <link href="http://inlinecom.ru/w3c/firstcss/firstcss.htm"
+   hreflang=ru rel=alternate title="Русский">
+  <link href=firstcss.sl.html hreflang=sl rel=alternate
+   title="Slovenščina">
+  <link href="http://www.cincplug.com/W3C/Tutorials/firstcss.htm"
+   hreflang=sr rel=alternate title="Српски">
+  <link href=firstcss.th.html hreflang=th rel=alternate
+   title="ไทย">
+  <link
+   href="http://www.smartviper.com/Style/Example007ukr/011/firstcss.html"
+   hreflang=uk rel=alternate title="Українська">
+  <link
+   href="http://www.shanghai.ws/w3c/Style/Examples/011/firstcss.html"
+   hreflang=zh-hans rel=alternate title="简体中文">
+  <link
+   href="http://www.thewebpractice.com/w3c/Style/Examples/011/firstcss-tr.html"
+   hreflang=zh-hant rel=alternate title="繁體中文">
+
+ <body>
+  <div class=section id=language>
+   <p><a href="#translations">Langues</a>
+
+   <p>Ceci est une traduction. Elle peut avoir des erreurs ou être
+    dépassée par rapport à <a href=firstcss.en.html hreflang=en
+    rel=alternate>la version anglaise.</a> Traducteur(-trice): <a
+    href="http://www.koalie.net/">Coralie Mercier</a>
+  </div>
+
+  <h1>Tutoriel CSS<br>
+   débuter avec HTML + CSS</h1>
+
+  <div class=map>
+   <h2 class=hide>Contenu</h2>
+
+   <ul>
+    <li id=p1><a href="#HTML">1. Le langage HTML</a>
+
+    <li id=p2><a href="#couleurs">2. Ajouter de la couleur</a>
+
+    <li id=p3><a href="#fontes">3. Ajouter des fontes</a>
+
+    <li id=p4><a href="#navbar">4. La barre de navigation</a>
+
+    <li id=p10><a href="#liens">5. Stylisez vos liens</a>
+
+    <li id=p6><a href="#ligne">6. Ligne horizontale</a>
+
+    <li id=p9><a href="#externe">7. CSS externe</a>
+
+    <li id=p5><a href="#savoir">En savoir plus</a>
+   </ul>
+  </div>
+
+  <p>Ce court tutoriel est destiné à  ceux qui commencent à 
+   utiliser CSS et n'ont jamais écrit de feuille de style CSS.
+
+  <p>Il n'explique pas CSS en profondeur. Il explique comment créer un
+   fichier HTML, un fichier CSS et comment les faire fonctionner
+   ensemble. Après cela, vous pourrez lire d'<a href="#reading">autres
+   tutoriels</a> afin d'ajouter plus de caractéristiques à  vos
+   fichiers HTML et CSS. Ou bien vous pouvez utiliser un <a
+   href="../../CSS/software#editors" hreflang=en>éditeur HTML ou
+   CSS</a> afin de mettre en place des sites complexes.
+
+  <p>A la fin de ce tutoriel, vous aurez fait un fichier HTML qui
+   ressemble à  cela:
+
+  <div class=figure>
+   <p><object data=mapage.html type="text/html">
+    <p><a href=mapage.html>[Lien vers la page HTML finale]</a>
+    </object>
+
+   <p>Page HTML résultante, couleurs et disposition effectuées avec
+    CSS.
+  </div>
+
+  <p>Notez que je ne prétends pas que c'est joli :)
+
+  <div class=advanced>
+   <p><img alt="Attention! Explication avancée:" class=sign
+    src=gevaar.png> Voici un exemple de section <em>optionelle</em>.
+    Elles contiennent des explications supplémentaires du langage HTML
+    etTML et du code CSS des exemples. L'icone "alerte!" qui les
+    précède indique que la section contient des informations plus
+    avancéees que le reste.
+  </div>
+
+  <div class=section id=HTML>
+   <h2>Etape 1: Le langage HTML</h2>
+
+   <p>Pour ce tutoriel, je vous recommande d'utiliser des outils
+    simples comme Blocnote (Windows), TextEdit (Mac) ou KEdit (KDE).
+    Une fois que vous aurez intégré ces principes, vous pourrez
+    facilementement utiliser des outils plus avancés, ou des logiciels
+    commerciaux tels que Style Master, Dreamweaver ou GoLive. Cependant
+    pour votre première feuille de style CSS, il vaut mieux que vous
+    ne soyiez pas distrait par de nombreuses caractéristiques
+    avancées.
+
+   <p>N'utilisez pas un logiciel de traitement de texte, tels que
+    Microsoft Word ou OpenOffice, car ils produisent des fichiers qu'un
+    navigateur Web ne sait pas lire. Pour HTML et CSS, nous voulons de
+    simples fichiers texte.
+
+   <p>L'étape 1 est d'ouvrir votre éditeur de texte (Notepad,
+    TextEdit, KEdit, etc., quel que soit votre éditeur favori), de
+    commencer avec une fenêtre vide et de taper ceci:
+
+   <pre>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Ma première page avec du style&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;!-- Menu de navigation du site --&gt;
+&lt;ul class="navbar"&gt;
+  &lt;li&gt;&lt;a href="index.html"&gt;Home page&lt;/a&gt;
+  &lt;li&gt;&lt;a href="reflexions.html"&gt;Réflexions&lt;/a&gt;
+  &lt;li&gt;&lt;a href="ville.html"&gt;Ma ville&lt;/a&gt;
+  &lt;li&gt;&lt;a href="liens.html"&gt;Liens&lt;/a&gt;
+&lt;/ul&gt;
+
+&lt;!-- Contenu principal --&gt;
+&lt;h1&gt;Ma première page avec du style&lt;/h1&gt;
+
+&lt;p&gt;Bienvenue sur ma page avec du style! 
+
+&lt;p&gt;Il lui manque des images, mais au moins, elle a du style. Et elle a desliens, même s'ils ne mènent nulle part...
+&amp;hellip;
+
+&lt;p&gt;Je devrais étayer, mais je ne sais comment encore.
+
+&lt;!-- Signer et dater la page, c'est une question de politesse! --&gt;
+&lt;address&gt;Fait le 5 avril 2004&lt;br&gt;
+  par moi.&lt;/address&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+   <p>En fait, vous n'avez pas à le taper: vous pouvez le copier et
+    coller depuis cette page Web dans votre éditeur.
+
+   <p>(Si vous utilisez TextEdit sur Mac, n'oubliez pas de dire à
+    TextEdit qu'il s'agit de texte simple; pour ceci, allez au menu
+    Format et sélectionnez "Convertir au format Texte".)
+
+   <div class=advanced>
+    <p><img alt="Attention! Explication avancée:" class=sign
+     src=gevaar.png> La première ligne du fichier HTML ci-dessus dit
+     au navigateur de quel type d'HTML il s'agit (DOCTYPE signifie
+     DOCument TYPE). Dans ce cas, il s'agit de la version 4.01 d'HTML.
+
+    <p>Les mots à l'intérieur de &lt; et &gt; sont nommés
+     <em>balises</em> et comme vous pouvez le voir, le document est
+     contenu à l'intérieur des balises &lt;html&gt; et &lt;/html&gt;.
+     Entre &lt;head&gt; et &lt;/head&gt; se trouve la place pour des
+     informations variées qui ne sont pas affichées à l'écran. A ce
+     stade, il contient le titre du document, mais plus tard, nous y
+     ajouterons la feuille de style CSS.
+
+    <p>Le &lt;body&gt; est l'emplacement du texte à proprement parler
+     de notre document. En principe, tout ce qui s'y trouve sera
+     affiché, à l'exception du texte contenu entre entre &lt;!-- et
+     --&gt;, qui sert de commentaire pour nous-même. Le navigateur
+     ignorera ce texte.
+
+    <p>Parmi les balises de l'exemple, &lt;ul&gt; introduit une "Liste
+     non ordonnée", c'est à dire une liste dans laquelle les
+     éléments ne sont pas numérotés. La balise &lt;li&gt; est le
+     début d'un "élément de liste ". Le &lt;p&gt; est un
+     "paragraphe". Et le &lt;a&gt; est une "ancre", ce qui crée un
+     hyperlien.
+   </div>
+
+   <div class=figure>
+    <p><img alt="le code source HTML affiché par Subethaedit"
+     src=capture.png>
+
+    <p>L'éditeur Subethaedit affichant le code source HTML.
+   </div>
+
+   <div class=advanced>
+    <p><img alt="Attention! Explication avancée:" class=sign
+     src=gevaar.png> Si vous désirez connaître la signification du
+     contenu d'un &lt;…&gt;, je vous recommande de commencer avec <a
+     href="../../../MarkUp/Guide/" hreflang=en><cite>Getting started
+     with HTML.</cite></a> Mais permettez-moi de vous livrer quelques
+     mots sur la structure de la page HTML en exemple.
+
+    <ul>
+     <li>Le "ul" est une liste avec un hyperlien par élément. Cela
+      nous servira de "menu de navigation de site," nous créerons des
+      liens vers les autres pages de notre (hypothétique) site Web.
+      Nous présumons que toutes les pages sur notre site ont un menu
+      similaire.
+
+     <li>Les éléments "h1" et "p" forment le contenu unique de cette
+      page, et la signature en bas ("address") sera similaire sur
+      toutes les pages du site.
+    </ul>
+
+    <p>Notez que je n'ai pas fermé les éléments "li" et "p". En
+     langage HTML (mais pas en XHTML), il est permis d'omettre les
+     balises &lt;/li&gt; et &lt;/p&gt;, ce que j'ai fait là, afin de
+     rendre le texte un peu plus facile à lire. Mais vous pouvez les
+     ajouter, si vous préférez.
+   </div>
+
+   <p>Admettons qu'il s'agira d'une page d'un site Web contenant
+    plusieurs pages similaires. Comme dans beaucoup de pages Web
+    actuelles, celle-ci a un menu avec des liens vers d'autres pages de
+    notre site hypothétique, un contenu unique ainsi qu'une signature.
+
+   <p>Sélectionnez maintenanttenant "Sauver-sous…" depuis votre menu
+    Fichier, naviguez vers le répertoire/dossier où vous voulez
+    sauver votre fichier (le Bureau est tout à fait convenable) et
+    sauvez le fichier sous le nom "mapage.html". Ne fermez pas
+    l'éditeur car nous en aurons encore besoin.
+
+   <p>(Si vous utilisez TextEdit sur Mac OS X avant version 10.4, vous
+    voyez une option pour ne pas ajouter l'extension .txt.
+    Selectionnez cette option, parce que "mapage.html" a déjà une
+    extension. Les versions plus récentes de TextEdit remarquent
+    l'extension .html automatiquement.)
+
+   <p>Ensuite, ouvrez le fichier dans un navigateur. Vous pouvez faire
+    cela comme suit: cherchez le fichier avec votre explorateur de
+    fichiers (Explorateur Windows, Finder ou Konqueror) et cliquez ou
+    double-cliquez sur le fichier "mapage.html". Il devrait s'ouvrir
+    dans votre navigateur Web par défaut. (Si ce n'est pas le cas,
+    ouvrez votre navigateur et cliquez-déplacez le fichier dans le
+    navigateur.)
+
+   <p>Comme vous pouvez le voir, la page est assez ennuyeuse…
+  </div>
+
+  <div class=section id=couleurs>
+   <h2>Etape 2: Ajouter de la couleur</h2>
+
+   <p>Vous voyez probablement du texte noir sur un fond blanc, mais
+    cela dépend de la façon dont le navigateur est configuré. Une
+    manière simple de rendre la page plus stylée et d'y ajouter des
+    couleurs. (Laissez votre navigateur ouvert, nous l'utiliserons à
+    nouveau plus tard.)
+
+   <p>Nous allons commencer avec une feuille de style intégrée dans
+    le fichier HTML. Par la suite, nous nous mettrons le HTML et le CSS
+    dans des fichiers séparés. Séparer les fichiers est une bonne
+    chose car cela vous permet facilement d'utiliser la même feuille
+    de style sur plusieurs fichiers HTML: il vous suffit d'écrire
+    votre feuille de style une fois. Mais pour cette cette étape, nous
+    écrirons tout dans notre seul fichier.
+
+   <p>Nous devons ajouter un élément &lt;style&gt; au fichier HTML.
+    La feuille de style sera dans cet élément. Retournez à la
+    fenêtre de votre éditeur et ajoutez les cinq lignes suivantes
+    dans la partie head de votre fichier HTML. Les lignes à ajouter
+    sont affichées en rouge<span class=hide>(lignes 5 à 9)</span>.
+
+   <pre>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Ma première page avec du style&lt;/title&gt;
+  <strong>&lt;style type="text/css"&gt;
+  body {
+    color: purple;
+    background-color: #d8da3d }
+  &lt;/style&gt;</strong>
+&lt;/head&gt;
+
+&lt;body&gt;
+[etc.]</pre>
+
+   <p>La première ligne indique qu'il s'agit d'une feuille de style et
+    qu'elle est écrite en CSS ("text/css"). La seconde ligne indique
+    que nous ajoutons du style à l'élément "body". La troisième
+    ligne indique que la couleur du texte sera le violet, et la ligne
+    suivante que le fond aura comme couleur une sorte de jaune
+    verdâtre.
+
+   <div class=advanced>
+    <p><img alt="Attention! Explication avancée:" class=sign
+     src=gevaar.png> Les feuilles de style en CSS sont constituées de
+     <em>règles</em>. Chacune des règles est en trois partie:
+
+    <ol>
+     <li>Le <em>sélecteur</em> (dans l'exemple: "body"), qui indique
+      au navigateur quelle partie du document est affectée par la
+      règle;
+
+     <li>La <em>propriété</em> (dans l'exemple, 'color' et
+      'background-color' sont des propriétés), qui spécifie quel
+      aspect de l'affichage est paramétré
+
+     <li>Et la <em>valeur</em> ('purple' et '#d8da3d'), qui indique la
+      valeur de la propriété de style.
+    </ol>
+
+    <p>L'exemple montre que les règles peuvent être combinées. Nous
+     avons paramétré deux propriétés, donc nous aurions pu en faire
+     deux règles séparées:
+
+    <pre>body { color: purple }
+body { background-color: #d8da3d }</pre>
+
+    <p>mais puisque les deux règles affectent le corps ("body"), nous
+     avons indiqué "body" une seule fois et mis les propriétés et
+     valeurs ensemble. Pour en savoir plus sur les sélecteurs, se
+     reporter au <a href="../../LieBos2e/enter/" hreflang=en>chapitre
+     2</a> de <cite>Lie &amp; Bos</cite>.
+   </div>
+
+   <p>Le fond de l'élément "body" sera également le fond de tout le
+    document. Nous n'avons pas donné aux autres éléments (p, li,
+    address…) de valeur explicite sur le fond, donc par défaut, ils
+    n'en auront pas (ou plutôt: ils seront transparents). La
+    propriété 'color' détermine la couleur du texte de l'élément
+    "body", mais tous les autres éléments dans le corps hériteront
+    de cette couleur, à moins qu'une autre soit spécifiée (Nous
+    ajouterons d'autres couleurs plus plus tard.)
+
+   <p>Sauvez maintenant ce fichier (utilisez "Sauver" depuis le menu
+    Fichier) et retournez à la fenêtre de votre navigateur. Si vous
+    pressez l'icône "Recharger", l'affichage devrait changer de la
+    page "ennuyeuse" à une page colorée (mais certes toujours
+    ennuyeuse) A part la liste de liens en haut, le texte devrait
+    maintenant être violet sur un fond jaune verdâtre.
+
+   <div class=figure>
+    <p><img alt="Capture d'écran de la page colorée dans Amaya"
+     src=capture2.png>
+
+    <p>Voici comment un navigateur affiche la page maintenant que des
+     couleurs ont été ajoutéees.
+   </div>
+
+   <div class=advanced>
+    <p><img alt="Attention! Explication avancée:" class=sign
+     src=gevaar.png> <img alt="" class=illustration
+     src="../../CSS/colors"> En CSS, les couleurs peuvent être
+     spécifiées de plusieurs manières. Cet exemple en montre deux:
+     par nom ("purple") et par code hexadécimal ("#d8da3d"). Il y a à
+     peu prés 140 noms de couleurs. Les codes hexadécimaux permettent
+     plus de 16 millions de couleurs. <a
+     href="../../../MarkUp/Guide/Style"><cite>Adding a touch of
+     style</cite></a> fournit plus d'explications à propos de ces
+     codes.
+   </div>
+  </div>
+
+  <div class=section id=fontes>
+   <h2>Etape 3: Ajouter des fontes</h2>
+
+   <p>Une autre chose simple à faire est de distinguer les fontes des
+    différents éléments de la page. Choisissons la fonte "Georgia",
+    sauf pour le texte des titres de type h1 pour lesquels nous
+    choisirons la fonte "Helvetica."
+
+   <p>Sur le Web, vous ne pouvez jamais être sûr des fontes qu'auront
+    vos lecteurs sur leurs ordinateurs, donc nous ajouterons des
+    alternatives: si Georgia n'est pas disponible, Times New Roman ou
+    Times iront très bien, et si ces deux-la sont également
+    indisponibles, le navigateur pourra utiliser une autre fonte dans
+    la famille <a
+    href="http://www.m-w.com/cgi-bin/dictionary?book=Dictionary&amp;va=serif"
+    hreflang=en>serifs.</a> Si Helvetica est absente, Geneva, Arial et
+    SunSans-Regular sont assez similaire en forme, et si aucune de
+    celles-ci ne fonctionne, le navigateur pourra choisir une autre
+    fonte sans serif.
+
+   <p>Dans votre éditeur de texte, ajoutez les lignes suivantes <span
+    class=hide>(lignes 7-8 et 11-13)</span>:
+
+   <pre>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Ma première page avec du style&lt;/title&gt;
+  &lt;style type="text/css"&gt;
+  body {
+    <strong>font-family: Georgia, "Times New Roman",
+          Times, serif;</strong>
+    color: purple;
+    background-color: #d8da3d }
+  <strong>h1 {
+    font-family: Helvetica, Geneva, Arial,
+          SunSans-Regular, sans-serif }</strong>
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+[etc.]</pre>
+
+   <p>Si vous sauvez à nouveau et pressez "Recharger" dans le
+    navigateur, vous devriez voir des fontes différentes pour le titre
+    et le reste du texte.
+
+   <div class=figure>
+    <p><img alt="Capture d'écran avec les fontes ajoutées"
+     src=capture3.png>
+
+    <p>Maintenant le texte principal a une fonte différente de celle
+     du titre.
+   </div>
+  </div>
+
+  <div class=section id=navbar>
+   <h2>Etape 4: La barre de navigation</h2>
+
+   <p>La liste en haut de la page HTML est sensée devenir un menu de
+    navigation. Beaucoup de sites Web ont une sorte de menu en haut ou
+    sur le côté de la page, et notre page devrait en avoir un aussi.
+    Nous le mettrons du côté gauche, parce que c'est un peu plus
+    intéressant qu'en haut…
+
+   <p>Le menu est déjà dans la page HTML. Il s'agit de la liste
+    &lt;ul&gt; en haut. Les liens à l'intérieur ne fonctionnent pas,
+    puisque notre notre "site Web" consiste en une seule page, jusqu'à
+    présent, donc ceci importe peu. Dans un site Web réel, il ne
+    devrait pas y avoir de lien cassé, évidemment.
+
+   <p>Nous devons donc déplacer la liste à gauche, et le reste du
+    texte un petit peu à droite, pour faire de la place pour notre
+    menu. Les propriétés CSS que nous utiliserons pour cela sont
+    'padding-left' (pour déplacer le texte du corps) et 'position',
+    'left' et 'top' (pour déplacer le menu).
+
+   <p>Il y a d'autres manières de le faire. Si vous recherchez
+    "column" ou "layout" dans la page <a
+    href="../../CSS/learning"><cite>Learning CSS</cite></a>, vous
+    trouverez plusieurs modèles prêt à l'emploi. Mais cette manière
+    convient à nos besoins.
+
+   <p>Dans la fenêtre d'édition, ajoutez les lignes suivantes au
+    fichier HTML <span class=hide>(lignes 7 et 12-16)</span>:
+
+   <pre>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Ma première page avec du style&lt;/title&gt;
+  &lt;style type="text/css"&gt;
+  body {
+    <strong>padding-left: 11em;</strong>
+    font-family: Georgia, "Times New Roman",
+          Times, serif;
+    color: purple;
+    background-color: #d8da3d }
+  <strong>ul.navbar {
+    position: absolute;
+    top: 2em;
+    left: 1em;
+    width: 9em }</strong>
+  h1 {
+    font-family: Helvetica, Geneva, Arial,
+          SunSans-Regular, sans-serif }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+[etc.]</pre>
+
+   <p>Si vous sauvez encore et rechargez la page dans votre navigateur,
+    vous devriez maintenant avoir la liste de liens à gauche du texte
+    principal. C'est déjà bien plus intéressant, n'est-ce pas?
+
+   <div class=figure>
+    <p><img alt="Capture d'écran avec le menu à gauche"
+     src=capture4.png>
+
+    <p>Le texte principal a été déplacé à droite et la liste de
+     liens est maintenant à sa gauche au lieu d'être au-dessus.
+   </div>
+
+   <div class=advanced>
+    <p><img alt="Attention! Explication avancée:" class=sign
+     src=gevaar.png>'position: absolute' précise que l'élément ul
+     est positionné de façon indépendante de tout texte qui vient
+     avant ou après dans le document, et 'left' et 'top' indiquent
+     quelle est cette position. Dans ce cas, 2em depuis le haut et 1em
+     depuis le côté gauche de cette fenêtre.
+
+    <p>'2em' signifie 2 fois la taille de la fonte courante. C'est à
+     dire que si le menu est affiché avec une fonte de 12 points,
+     '2em' font 24 points. L'unité 'em' est très utile en CSS
+     puisqu'elle peut s'adapter automatiquement à la fonte que le
+     lecteur utilise. La plupart des navigateurs ont un menu pour
+     agrandir et réduire la taille de fonte: vous pouvez l'essayer et
+     voir comment la taille du menu augmente dès que la fonte grossit,
+     ce qui n'aurait pas été le cas si nous avions utilisé une
+     taille en pixels à la place.
+   </div>
+  </div>
+
+  <div class=section id=liens>
+   <h2>Etape 5: Stylisez vos liens</h2>
+
+   <p>Le menu de navigation ressemble toujours à une liste au lieu
+    d'un menu. Ajoutons un peu de style. Nous allons supprimer les
+    points de la liste et déplacer les éléments à gauche, à
+    l'endroit où étaient les points. Nous allons aussi donner à
+    chaque élément son propre fond blanc ainsi qu'un carré noir.
+    (Pourquoi? Aucune raison en particulier, si ce n'est que l'on peut
+    le faire.)
+
+   <p>Nous n'avons pas déterminé quelle couleur auront les liens,
+    alors nous ajouterons cela également: bleu pour les liens que
+    l'utilisateur n'a pas encore vu et violet pour les liens déjà
+    visités <span class=hide>(lignes 13-15 et 23-33)</span>:
+
+   <pre>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Ma première page avec du style&lt;/title&gt;
+  &lt;style type="text/css"&gt;
+  body {
+    padding-left: 11em;
+    font-family: Georgia, "Times New Roman",
+          Times, serif;
+    color: purple;
+    background-color: #d8da3d }
+  ul.navbar {
+    <strong>list-style-type: none;
+    padding: 0;
+    margin: 0;</strong>
+    position: absolute;
+    top: 2em;
+    left: 1em;
+    width: 9em }
+  h1 {
+    font-family: Helvetica, Geneva, Arial,
+          SunSans-Regular, sans-serif }
+  <strong>ul.navbar li {
+    background: white;
+    margin: 0.5em 0;
+    padding: 0.3em;
+    border-right: 1em solid black }
+  ul.navbar a {
+    text-decoration: none }
+  a:link {
+    color: blue }
+  a:visited {
+    color: purple }</strong>
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+[etc.]</pre>
+
+   <div class=advanced>
+    <p><img alt="Attention! Explication avancée:" class=sign
+     src=gevaar.png> Traditionellement, les navigateurs montrent les
+     hyperliens soulignés et en couleurs. Habituellement, les couleurs
+     sont similaires à celles que nous avons spécifiées ici: bleu
+     pour les liens vers des pages qui n'ont pas encore été visitées
+     (ou visitées il y a longtemps), violet pour les pages qui ont
+     été déjà visitées.
+
+    <p>En HTML, les hyperliens sont créés avec l'élément &lt;a&gt;,
+     donc pour préciser la couleur, nous devons ajouter une règle de
+     style pour "a". Afin de différencier les liens visités et les
+     liens non visités, CSS propose deux "pseudo-classes" (:link et
+     :visited). Elles sont appelées "pseudo-classes" pour les
+     distinguer des classes <em>attributs,</em> qui apparaissent
+     directement dans le HTML, c'est à dire, la classe
+     <code>class="navbar"</code> dans notre exemple.
+   </div>
+  </div>
+
+  <div class=section id=ligne>
+   <h2>Etape 6: Ligne horizontale</h2>
+
+   <p>L'ajout final à notre feuille de style est une ligne horizontale
+    pour séparer le texte de la signature en bas. Nous utiliserons
+    'border-top' afin d'ajouter une ligne en pointillé au-dessus de
+    l'élément &lt;address&gt; <span class=hide>(lignes 34-37)</span>:
+
+   <pre>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Ma première page avec du style&lt;/title&gt;
+  &lt;style type="text/css"&gt;
+  body {
+    padding-left: 11em;
+    font-family: Georgia, "Times New Roman",
+          Times, serif;
+    color: purple;
+    background-color: #d8da3d }
+  ul.navbar {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 2em;
+    left: 1em;
+    width: 9em }
+  h1 {
+    font-family: Helvetica, Geneva, Arial,
+          SunSans-Regular, sans-serif }
+  ul.navbar li {
+    background: white;
+    margin: 0.5em 0;
+    padding: 0.3em;
+    border-right: 1em solid black }
+  ul.navbar a {
+    text-decoration: none }
+  a:link {
+    color: blue }
+  a:visited {
+    color: purple }
+  <strong>address {
+    margin-top: 1em;
+    padding-top: 1em;
+    border-top: thin dotted }</strong>
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+[etc.]</pre>
+
+   <p>Notre style est désormais terminé. Maintenant, penchons-nous
+    sur comment faire de notre feuille de style un fichier à part, de
+    sorte que d'autres pages peuvent partager le même style.
+  </div>
+
+  <div class=section id=externe>
+   <h2>Etape 7: Mettre la feuille de style dans un fichier à part</h2>
+
+   <p>Nous disponsons d'un fichier HTML avec une feuille de style
+    intégrée. Mais si notre site se développe, nous voulons
+    probablement que plusieurs pages partagent le même style. Il
+    existe une meilleure méthode que de copier la feuille de style
+    dans chaque page: si nous mettons la feuille de style dans un
+    fichier à part, toutes les pages peuvent pointer sur celui-ci.
+
+   <p>Pour créer un fichier de feuille de style, nous devons créer un
+    autre fichier texte vide. Vous pouvez sélectionner "Nouveau"
+    depuis le menu Fichier de votre éditeur pour obtenir une fenêtre
+    vide. (Si vous utilisez TextEdit, n'oubliez pas de forcer le texte
+    simple à nouveau, en utilisant le menu Format.)
+
+   <p>Ensuite, coupez et collez le contenu de l'élément &lt;style&gt;
+    depuis le fichier HTML vers la nouvelle fenêtre. Ne copiez pas les
+    éléments &lt;style&gt; et &lt;/style&gt;. Ils appartiennent au
+    langage HTML, pas à CSS. Dans la nouvelle fenêtre d'édition,
+    vous devriez maintenant avoir la feuille de style complète:
+
+   <pre>body {
+  padding-left: 11em;
+  font-family: Georgia, "Times New Roman",
+        Times, serif;
+  color: purple;
+  background-color: #d8da3d }
+ul.navbar {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 2em;
+  left: 1em;
+  width: 9em }
+h1 {
+  font-family: Helvetica, Geneva, Arial,
+        SunSans-Regular, sans-serif }
+ul.navbar li {
+  background: white;
+  margin: 0.5em 0;
+  padding: 0.3em;
+  border-right: 1em solid black }
+ul.navbar a {
+  text-decoration: none }
+a:link {
+  color: blue }
+a:visited {
+  color: purple }
+address {
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: thin dotted }</pre>
+
+   <p>Choisissez "Sauver-sous…" depuis le menu Fichier, assurez-vous
+    que vous êtes dans le même répertoire/dossier où vous avez
+    enregistré le fichier mapage.html, et sauvez la feuille de style
+    sous le nom "monstyle.css".
+
+   <p>Revenez maintenant à la fenêtre contenant le code HTML.
+    Supprimez tout depuis la balise &lt;style&gt; jusqu'après la
+    balise &lt;/style&gt; et remplacez par l'élément &lt;link&gt;
+    comme suit <span class=hide>(ligne 5)</span>:
+
+   <pre>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Ma première page avec du style&lt;/title&gt;
+  <strong>&lt;link rel="stylesheet" href="monstyle.css"&gt;</strong>
+&lt;/head&gt;
+
+&lt;body&gt;
+[etc.]</pre>
+
+   <p>Ceci indiquera au navigateur que la feuille de style se trouve
+    dans le fichier nommé "monstyle.css" et puisqu'aucun répertoire
+    n'est mentionné, le navigateur regardera dans le même répertoire
+    que le fichier HTML.
+
+   <p>Si vous sauvez votre fichier HTML et le rechargez dans votre
+    navigateur, vous ne devriez voir aucun changement: la page a
+    toujours le même style, mais celui-ci provient maintenant d'un
+    fichier externe.
+
+   <div class=figure>
+    <p><img alt="Résultat final du style" src=capture5.png>
+
+    <p>Le résultat final
+   </div>
+
+   <p>L'étape suivante est d'enregistrer les deux fichiers mapage.html
+    et monstyle.css sur votre site Web. (Probablement après les avoir
+    modifié un peu au préalable…) Mais cela dépend entièment de
+    votre fournisseur d'accès Internet.
+  </div>
+
+  <div class=section id=savoir>
+   <h2>En savoir plus</h2>
+
+   <p>Pour une introduction à CSS, lire le <a
+    href="../../LieBos2e/enter/" hreflang=en>chapitre 2</a> de
+    <cite>Lie &amp; Bos</cite>, ou <a
+    href="../../../MarkUp/Guide/Style" hreflang=en><cite>Dave Raggett's
+    intro to CSS</cite></a> (Introduction à CSS par Dave Raggett).
+
+   <p>Vous trouverez d'autres informations, ainsi que d'autres
+    tutoriels à la page <a href="../../CSS/learning"
+    hreflang=en>learning CSS</a> (Apprendre CSS).
+  </div>
+
+  <div class=section id=translations>
+   <h2>Langues</h2>
+
+   <ul>
+    <li><a
+     href="http://www.ich-lerne-css.de/Style/Examples/011/firstcss/"
+     hreflang=de rel=alternate>Deutsch</a>
+
+    <li><a href=firstcss.en.html hreflang=en rel=alternate>English</a>
+
+    <li><a href=firstcss.es.html hreflang=es rel=alternate>Español</a>
+
+    <li><a href=firstcss.fr.html hreflang=fr
+     rel=alternate>Français</a>
+
+    <li><a
+     href="http://www.erasparsa.com/w3/Style/Examples/011/firstcss.id.html"
+     hreflang=id rel=alternate>Bahasa Indonesia</a>
+
+    <li><a
+     href="http://www.osservatoriosullacomunicazione.com/w3c/firstcss.html"
+     hreflang=it rel=alternate>Italiano</a>
+
+    <li><a href=firstcss.nl.html hreflang=nl
+     rel=alternate>Nederlands</a>
+
+    <li><a
+     href="http://www.tlumaczenia-angielski.info/w3c/css/css-beginner/firstcss.pl.html"
+     hreflang=pl rel=alternate>Polski</a>
+
+    <li><a href="http://www.maujor.com/w3ctuto/firstcss.html"
+     hreflang=pt rel=alternate>Português (Brasileiro)</a>
+
+    <li><a href="http://inlinecom.ru/w3c/firstcss/firstcss.htm"
+     hreflang=ru rel=alternate>Русский</a>
+
+    <li><a href=firstcss.sl.html hreflang=sl
+     rel=alternate>Slovenščina</a>
+
+    <li><a href="http://www.cincplug.com/W3C/Tutorials/firstcss.htm"
+     hreflang=sr rel=alternate>Српски</a>
+
+    <li><a href=firstcss.th.html hreflang=th
+     rel=alternate>ไทย</a>
+
+    <li><a
+     href="http://www.smartviper.com/Style/Example007ukr/011/firstcss.html"
+     hreflang=uk rel=alternate>Українська</a>
+
+    <li><a
+     href="http://www.shanghai.ws/w3c/Style/Examples/011/firstcss.html"
+     hreflang=zh-hans rel=alternate>简体中文</a>
+
+    <li><a
+     href="http://www.thewebpractice.com/w3c/Style/Examples/011/firstcss-tr.html"
+     hreflang=zh-hant rel=alternate>繁體中文</a>
+   </ul>
+
+   <p><a href="/Style/CSS/translating">À propos des traductions</a>
+  </div>
+
+  <div class=endmatter>
+   <div class=banner>
+    <p> <a class=home href="http://www.w3.org/" hreflang=en><img
+     alt=W3C src="http://www.w3.org/Icons/w3c_home"></a> <a
+     href="../../../Consortium/Activities" hreflang=en>Activities</a>
+     <a href="../../../TR/" hreflang=en>Tech. reports</a> <a
+     href="../../../Help/siteindex" hreflang=en>Site index</a> <a
+     href="../../../Consortium/Translation/"
+     hreflang=en>Translations</a> <a href="../../../Status"
+     hreflang=en>Software</a> <a href="http://search.w3.org/"
+     hreflang=en>Search</a> <em>Nearby:</em> <a href="../../"
+     hreflang=en>Style</a> <a href="../../CSS/" hreflang=en>CSS</a>
+   </div>
+
+   <p class=button><a href="http://www.w3.org/Style/CSS/Buttons/"
+    hreflang=en><img alt=CSS
+    src="http://www.w3.org/Style/CSS/Buttons/mwcts"></a> <a
+    href="http://jigsaw.w3.org/css-validator/" hreflang=fr><img
+    alt="Valid CSS!"
+    src="http://jigsaw.w3.org/css-validator/images/vcss"></a><a
+    href="http://validator.w3.org/check?uri=referer"><img
+    alt="Valid HTML 4.01 Strict" height=31
+    src="http://www.w3.org/Icons/valid-html401" width=88></a> <br>
+    Dernière modification jeu. 20 déc. 2012 19:10:15 CET
+
+   <address class=vcard><img alt="" class=photo
+    src="../../../People/Bos/bert3-small.jpg"> <a class="fn url"
+    href="../../../People/Bos/">Bert Bos</a>, <span
+    class=role>coordinateur de l'activité style</span><br>
+    <small><a href="/Consortium/Legal/ipr-notice#Copyright"
+    rel=copyright>Copyright</a> © 1994–2012 <a href="/"><acronym
+    title="World Wide Web Consortium">W3C</acronym><sup>®</sup></a></small></address>
+  </div>

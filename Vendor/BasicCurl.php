@@ -6,10 +6,8 @@ class BasicCurl {
 
     private $ressource = null;
     
-    public function __construct(Array $headers) {
+    public function __construct() {
         $this->ressource    = curl_init();
-        
-        curl_setopt($this->ressource, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($this->ressource, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($this->ressource, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($this->ressource, CURLOPT_SSL_VERIFYPEER, false);
@@ -42,14 +40,13 @@ class BasicCurl {
     }
 
     private function _execute() {
-        $response       = curl_exec($this->ressource);
-        $code           = curl_getinfo($this->ressource, CURLINFO_HTTP_CODE);
+        $response               = curl_exec($this->ressource);
+        $code                   = curl_getinfo($this->ressource, CURLINFO_HTTP_CODE);
         
-        $objResponse    = new \stdClass();
-        $objResponse->response = $response;
-        $objResponse->code = $code;
+        $objResponse            = new \stdClass();
+        $objResponse->response  = $response;
+        $objResponse->code      = $code;
 
         return $objResponse;
     }
-
 }
