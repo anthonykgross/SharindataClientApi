@@ -75,6 +75,7 @@ class SharindataClientApiTest extends \PHPUnit_Framework_TestCase {
         $data= $sca->getZone("europe");
         $this->assertTrue($data->code==200);
     }
+    
     public function testGetMainColor(){
         $sca = new \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi("kkuet12@live.fr", "050688");
         //file_put_contents(__DIR__."/test.png", file_get_contents("http://sharindata.com/Sharindata48x48.png"));
