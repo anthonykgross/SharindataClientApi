@@ -74,9 +74,7 @@ class SharindataClientApi{
         
         return new \KkuetNet\SharindataClientApi\Vendor\BasicCurl(array(
             'X-WSSE : '.$auth_wsse->getToken(),
-            'Authorization : WSSE profile="UsernameToken"',
-            'Accept : application/json',
-            'Content-Type : application/json'
+            'Authorization : WSSE profile="UsernameToken"'
         ));
     }
     

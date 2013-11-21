@@ -5,9 +5,12 @@ namespace KkuetNet\SharindataClientApi\Vendor;
 class BasicCurl {
 
     private $ressource = null;
+    private $headers   = array();
     
-    public function __construct() {
+    public function __construct(Array $headers) {
         $this->ressource    = curl_init();
+        $this->headers      = $headers;
+        
         curl_setopt($this->ressource, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($this->ressource, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($this->ressource, CURLOPT_SSL_VERIFYPEER, false);
@@ -40,13 +43,19 @@ class BasicCurl {
     }
 
     private function _execute() {
+        curl_setopt($this->ressource, CURLOPT_HTTPHEADER, $this->headers);
+
         $response               = curl_exec($this->ressource);
         $code                   = curl_getinfo($this->ressource, CURLINFO_HTTP_CODE);
-        
+
         $objResponse            = new \stdClass();
         $objResponse->response  = $response;
         $objResponse->code      = $code;
 
         return $objResponse;
+    }
+    
+    private function addHeader($header){
+        array_push($this->headers, $header);
     }
 }
