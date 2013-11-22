@@ -26,7 +26,7 @@ Composer will install the library to your project's `vendor/kkuetnet/sharindata-
 
 Request :
 ```php
-$response = new \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi("your_login", "your_password");
+$response = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance("your_login", "your_password");
 var_dump($response->getCountry("be"));
 ```
 JSON Response : 
