@@ -10,55 +10,72 @@ class SharindataClientApi{
     
     private $username               = null;
     private $password               = null;
+    private $curl                   = null;
+    private static $instance        = null;
     
-    public function __construct($username, $password) {
+    public static function getInstance($username = null, $password = null){
+        if(is_null(self::$instance) || (!is_null($username) && !is_null($password))){
+            self::$instance = new SharindataClientApi($username, $password);
+        }
+        return self::$instance;
+    }
+    
+    private function __construct($username, $password) {
         $this->username = $username;
         $this->password = $password;
+        $this->refreshWsseToken();
+    }
+    
+    public function refreshWsseToken(){
+        $this->curl     = new \KkuetNet\SharindataClientApi\Vendor\BasicCurl(array(
+            'X-WSSE : '.\KkuetNet\SharindataClientApi\Vendor\WsseAuth::getToken(self::api_url_create_token."?_username=".$this->username."&_password=".$this->password),
+            'Authorization : WSSE profile="UsernameToken"'
+        ));
     }
     
     public function getCountries(){
-        return $this->getCurl()->doGet(self::api_url."data/countries");
+        return $this->curl->doGet(self::api_url."data/countries");
     }
     
     public function getCountry($iso){
-        return $this->getCurl()->doGet(self::api_url."data/countries/".$iso);
+        return $this->curl->doGet(self::api_url."data/countries/".$iso);
     }
     
     public function getCurrencies(){
-        return $this->getCurl()->doGet(self::api_url."data/currencies");
+        return $this->curl->doGet(self::api_url."data/currencies");
     }
     
     public function getCurrency($iso_code){
-        return $this->getCurl()->doGet(self::api_url."data/currencies/".$iso_code);
+        return $this->curl->doGet(self::api_url."data/currencies/".$iso_code);
     }
     
     public function getLanguages(){
-        return $this->getCurl()->doGet(self::api_url."data/languages");
+        return $this->curl->doGet(self::api_url."data/languages");
     }
     
     public function getLanguage($iso_code_6391){
-        return $this->getCurl()->doGet(self::api_url."data/languages/".$iso_code_6391);
+        return $this->curl->doGet(self::api_url."data/languages/".$iso_code_6391);
     }
     
     public function getTimezones(){
-        return $this->getCurl()->doGet(self::api_url."data/timezones");
+        return $this->curl->doGet(self::api_url."data/timezones");
     }
     
     public function getTimezone($code){
-        return $this->getCurl()->doGet(self::api_url."data/timezones/".$code);
+        return $this->curl->doGet(self::api_url."data/timezones/".$code);
     }
     
     public function getZones(){
-        return $this->getCurl()->doGet(self::api_url."data/zones");
+        return $this->curl->doGet(self::api_url."data/zones");
     }
     
     public function getZone($code){
-        return $this->getCurl()->doGet(self::api_url."data/zones/".$code);
+        return $this->curl->doGet(self::api_url."data/zones/".$code);
     }
     
     public function getAllColors($image_path){
         $post = array('image' => '@'.$image_path);
-        return $this->getCurl()->doPost(self::api_url."tool/images/allcolors", $post);
+        return $this->curl->doPost(self::api_url."tool/images/allcolors", $post);
     }
     
     public function getMainsColors($image_path, $nbColor = null){
@@ -66,16 +83,6 @@ class SharindataClientApi{
         if($nbColor){
             $post['nbColor'] = $nbColor;
         }
-        return $this->getCurl()->doPost(self::api_url."tool/images/maincolors", $post);
+        return $this->curl->doPost(self::api_url."tool/images/maincolors", $post);
     }
-    
-    private function getCurl(){
-        $auth_wsse          = new \KkuetNet\SharindataClientApi\Vendor\WsseAuth(self::api_url_create_token."?_username=".$this->username."&_password=".$this->password);
-        
-        return new \KkuetNet\SharindataClientApi\Vendor\BasicCurl(array(
-            'X-WSSE : '.$auth_wsse->getToken(),
-            'Authorization : WSSE profile="UsernameToken"'
-        ));
-    }
-    
 }

@@ -30,7 +30,6 @@ class BasicCurl {
 
     public function doPut($url, $params) {
         curl_setopt($this->ressource, CURLOPT_URL, $url);
-        //curl_setopt($ressource, CURLOPT_POST, true);
         curl_setopt($this->ressource, CURLOPT_CUSTOMREQUEST, 'PUT');
         curl_setopt($this->ressource, CURLOPT_POSTFIELDS, $params);
         return $this->_execute($this->ressource);
@@ -51,11 +50,6 @@ class BasicCurl {
         $objResponse            = new \stdClass();
         $objResponse->response  = $response;
         $objResponse->code      = $code;
-
         return $objResponse;
-    }
-    
-    private function addHeader($header){
-        array_push($this->headers, $header);
     }
 }

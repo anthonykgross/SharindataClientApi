@@ -4,16 +4,9 @@ namespace KkuetNet\SharindataClientApi\Vendor;
 
 class WsseAuth{
 
-    private $url        = null;
-    private $token      = null;
-    
-    public function __construct($url) {
-        $this->url      = $url;
-    }
-    
-    public function getToken(){
+    public static function getToken($url){
         $ressource = curl_init();
-        curl_setopt($ressource, CURLOPT_URL, $this->url);
+        curl_setopt($ressource, CURLOPT_URL, $url);
         curl_setopt($ressource, CURLOPT_POST, true);
         curl_setopt($ressource, CURLOPT_POSTFIELDS, array());
         curl_setopt($ressource, CURLOPT_HTTPHEADER, array(
@@ -24,11 +17,11 @@ class WsseAuth{
         $response = curl_exec($ressource);
         $response = json_decode($response);
 
+        $token = null;
         if(isset($response->WSSE)){
-            $this->token = $response->WSSE;
+            $token = $response->WSSE;
         }
-        
-        return $this->token;
+        return $token;
     }
 }
 ?>
