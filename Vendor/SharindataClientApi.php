@@ -4,9 +4,9 @@ namespace KkuetNet\SharindataClientApi\Vendor;
 
 class SharindataClientApi{
     
-    const api_url                   = "http://sharindata.com/api/";
-    const api_url_create_token      = "http://sharindata.com/api/token/";
-    const api_url_destroy_token     = "http://sharindata.com/api/token/destroy";
+    const api_url                   = "http://www.sharindata.local/app_dev.php/api/";
+    const api_url_create_token      = "http://www.sharindata.local/app_dev.php/api/token/";
+    const api_url_destroy_token     = "http://www.sharindata.local/app_dev.php/api/token/destroy";
     
     private $username               = null;
     private $password               = null;
@@ -49,12 +49,20 @@ class SharindataClientApi{
         return $this->curl->doGet(self::api_url."data/currencies/".$iso_code);
     }
     
+    public function getCurrencyCountries($iso_code){
+        return $this->curl->doGet(self::api_url."data/currencies/".$iso_code."/countries");
+    }
+    
     public function getLanguages(){
         return $this->curl->doGet(self::api_url."data/languages");
     }
     
     public function getLanguage($iso_code_6391){
         return $this->curl->doGet(self::api_url."data/languages/".$iso_code_6391);
+    }
+    
+    public function getLanguageCountries($iso_code_6391){
+        return $this->curl->doGet(self::api_url."data/languages/".$iso_code_6391."/countries");
     }
     
     public function getTimezones(){
