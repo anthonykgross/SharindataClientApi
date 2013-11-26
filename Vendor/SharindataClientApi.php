@@ -38,7 +38,7 @@ class SharindataClientApi{
     }
     
     public function getCountry($iso){
-        return $this->curl->doGet(self::api_url."data/countries/".$iso);
+        return $this->curl->doGet(self::api_url."data/country/".$iso);
     }
     
     public function getCurrencies(){
@@ -46,11 +46,11 @@ class SharindataClientApi{
     }
     
     public function getCurrency($iso_code){
-        return $this->curl->doGet(self::api_url."data/currencies/".$iso_code);
+        return $this->curl->doGet(self::api_url."data/currency/".$iso_code);
     }
     
     public function getCurrencyCountries($iso_code){
-        return $this->curl->doGet(self::api_url."data/currencies/".$iso_code."/countries");
+        return $this->curl->doGet(self::api_url."data/currency/".$iso_code."/countries");
     }
     
     public function getLanguages(){
@@ -58,11 +58,11 @@ class SharindataClientApi{
     }
     
     public function getLanguage($iso_code_6391){
-        return $this->curl->doGet(self::api_url."data/languages/".$iso_code_6391);
+        return $this->curl->doGet(self::api_url."data/language/".$iso_code_6391);
     }
     
     public function getLanguageCountries($iso_code_6391){
-        return $this->curl->doGet(self::api_url."data/languages/".$iso_code_6391."/countries");
+        return $this->curl->doGet(self::api_url."data/language/".$iso_code_6391."/countries");
     }
     
     public function getTimezones(){
@@ -70,7 +70,7 @@ class SharindataClientApi{
     }
     
     public function getTimezone($code){
-        return $this->curl->doGet(self::api_url."data/timezones/".$code);
+        return $this->curl->doGet(self::api_url."data/timezone/".$code);
     }
     
     public function getZones(){
@@ -78,7 +78,7 @@ class SharindataClientApi{
     }
     
     public function getZone($code){
-        return $this->curl->doGet(self::api_url."data/zones/".$code);
+        return $this->curl->doGet(self::api_url."data/zone/".$code);
     }
     
     public function getRandomString($length, $option = null){
@@ -86,12 +86,12 @@ class SharindataClientApi{
          if(is_int($option)){
             $post['option'] = $option;
         }
-        return $this->curl->doPost(self::api_url."tool/randoms/strings", $post);
+        return $this->curl->doPost(self::api_url."tool/random/string", $post);
     }
     
     public function getAllColors($image_path){
         $post = array('image' => '@'.$image_path);
-        return $this->curl->doPost(self::api_url."tool/images/allcolors", $post);
+        return $this->curl->doPost(self::api_url."tool/image/allcolors", $post);
     }
     
     public function getMainsColors($image_path, $nbColor = null){
@@ -99,6 +99,6 @@ class SharindataClientApi{
         if($nbColor){
             $post['nbColor'] = $nbColor;
         }
-        return $this->curl->doPost(self::api_url."tool/images/maincolors", $post);
+        return $this->curl->doPost(self::api_url."tool/image/maincolors", $post);
     }
 }

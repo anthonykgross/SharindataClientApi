@@ -4,8 +4,8 @@ namespace KkuetNet\SharindataClientApi\Tests\Vendor;
 
 class SharindataClientApiTest extends \PHPUnit_Framework_TestCase {
 
-    private static $apiKey    = "";
-    private static $apiSecret = "";
+    private static $apiKey    = "dPMf3YTKM0QMunYRwqKI";
+    private static $apiSecret = "H9mibm4rLuYCQSz8AzfL";
 
     public function testConnexion(){
         $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance("sdfsf", "sdfsdfsdf");
@@ -20,67 +20,67 @@ class SharindataClientApiTest extends \PHPUnit_Framework_TestCase {
     }
     
     public function testGetCountries(){
-        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::apiKey, self::apiSecret);
+        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::$apiKey, self::$apiSecret);
         $data= $sca->getCountries();
         $this->assertTrue($data->code==200);
     }
     
     public function testGetCountry(){
-        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::apiKey, self::apiSecret);
+        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::$apiKey, self::$apiSecret);
         $data= $sca->getCountry("fr");
         $this->assertTrue($data->code==200);
     }
     
     public function testGetCurrencies(){
-        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::apiKey, self::apiSecret);
+        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::$apiKey, self::$apiSecret);
         $data= $sca->getCurrencies();
         $this->assertTrue($data->code==200);
     }
     
     public function testGetCurrency(){
-        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::apiKey, self::apiSecret);
+        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::$apiKey, self::$apiSecret);
         $data= $sca->getCurrency("eur");
         $this->assertTrue($data->code==200);
     }
     
     public function testGetLanguages(){
-        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::apiKey, self::apiSecret);
+        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::$apiKey, self::$apiSecret);
         $data= $sca->getLanguages();
         $this->assertTrue($data->code==200);
     }
     
     public function testGetLanguage(){
-        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::apiKey, self::apiSecret);
+        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::$apiKey, self::$apiSecret);
         $data= $sca->getLanguage("fr");
         $this->assertTrue($data->code==200);
     }
     
     public function testGetTimezones(){
-        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::apiKey, self::apiSecret);
+        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::$apiKey, self::$apiSecret);
         $data= $sca->getTimezones();
         $this->assertTrue($data->code==200);
     }
     
     public function testGetTimezone(){
-        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::apiKey, self::apiSecret);
+        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::$apiKey, self::$apiSecret);
         $data= $sca->getTimezone("europe_paris");
         $this->assertTrue($data->code==200);
     }
     
     public function testGetZones(){
-        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::apiKey, self::apiSecret);
+        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::$apiKey, self::$apiSecret);
         $data= $sca->getZones();
         $this->assertTrue($data->code==200);
     }
     
     public function testGetZone(){
-        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::apiKey, self::apiSecret);
+        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::$apiKey, self::$apiSecret);
         $data= $sca->getZone("europe");
         $this->assertTrue($data->code==200);
     }
     
     public function testGetMainColor(){
-        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::apiKey, self::apiSecret);
+        $sca = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::$apiKey, self::$apiSecret);
         $data= $sca->getMainsColors(__DIR__."/test.png");
         $this->assertTrue(count(json_decode($data->response, true))==2);
         $this->assertTrue($data->code==200);
