@@ -8,27 +8,27 @@ class SharindataClientApi{
     const api_url_create_token      = "http://sharindata.com/api/token/";
     const api_url_destroy_token     = "http://sharindata.com/api/token/destroy";
     
-    private $username               = null;
-    private $password               = null;
+    private $apiKey                 = null;
+    private $apiSecret              = null;
     private $curl                   = null;
     private static $instance        = null;
     
-    public static function getInstance($username = null, $password = null){
-        if(is_null(self::$instance) || (!is_null($username) && !is_null($password))){
-            self::$instance = new SharindataClientApi($username, $password);
+    public static function getInstance($apiKey = null, $apiSecret = null){
+        if(is_null(self::$instance) || (!is_null($apiKey) && !is_null($apiSecret))){
+            self::$instance = new SharindataClientApi($apiKey, $apiSecret);
         }
         return self::$instance;
     }
     
-    private function __construct($username, $password) {
-        $this->username = $username;
-        $this->password = $password;
+    private function __construct($apiKey, $apiSecret) {
+        $this->apiKey = $apiKey;
+        $this->apiSecret = $apiSecret;
         $this->refreshWsseToken();
     }
     
     public function refreshWsseToken(){
         $this->curl     = new \KkuetNet\SharindataClientApi\Vendor\BasicCurl(array(
-            'X-WSSE : '.\KkuetNet\SharindataClientApi\Vendor\WsseAuth::getToken(self::api_url_create_token."?_username=".$this->username."&_password=".$this->password),
+            'X-WSSE : '.\KkuetNet\SharindataClientApi\Vendor\WsseAuth::getToken(self::api_url_create_token."?_apikey=".$this->apiKey."&_apisecret=".$this->apiSecret),
             'Authorization : WSSE profile="UsernameToken"'
         ));
     }
