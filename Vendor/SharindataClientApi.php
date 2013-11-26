@@ -81,6 +81,14 @@ class SharindataClientApi{
         return $this->curl->doGet(self::api_url."data/zones/".$code);
     }
     
+    public function getRandomString($length, $option = null){
+        $post = array('length' => $length);
+         if(is_int($option)){
+            $post['option'] = $option;
+        }
+        return $this->curl->doPost(self::api_url."tool/randoms/strings", $post);
+    }
+    
     public function getAllColors($image_path){
         $post = array('image' => '@'.$image_path);
         return $this->curl->doPost(self::api_url."tool/images/allcolors", $post);

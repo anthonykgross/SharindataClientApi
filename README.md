@@ -4,7 +4,8 @@ Getting Started
 This library allow you to integrate easily Sharindata API into your project.
 
 ## Installation
-
+Create your account at Sharingame.com
+ 
 Add KkuetNetSharindataClientApi in your composer.json:
 
 ```js
@@ -26,7 +27,7 @@ Composer will install the library to your project's `vendor/kkuetnet/sharindata-
 
 Request :
 ```php
-$response = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance("your_login", "your_password");
+$response = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance("your_api_key", "your_api_secret");
 var_dump($response->getCountry("be"));
 ```
 JSON Response : 
