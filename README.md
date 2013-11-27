@@ -4,7 +4,7 @@ Getting Started
 This library allow you to integrate easily Sharindata API into your project.
 
 ## Installation
-Create your account at Sharingame.com
+Create your account at Sharindata.com
  
 Add KkuetNetSharindataClientApi in your composer.json:
 
