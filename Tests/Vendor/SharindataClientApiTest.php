@@ -108,4 +108,35 @@ class SharindataClientApiTest extends \PHPUnit_Framework_TestCase {
         $this->assertTrue(count(json_decode($data->response, true))==6);
         $this->assertTrue($data->code==200);
     }
+    
+    public function testGetRgbByHex(){
+        $sca        = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::$apiKey, self::$apiSecret);
+        $data       = $sca->getRgbByHex("#333333");
+        $this->assertTrue($data->code==200);
+        $response   = json_decode($data->response);
+        $this->assertTrue($response->r==51);
+        $this->assertTrue($response->g==51);
+        $this->assertTrue($response->b==51);
+        
+        $data       = $sca->getRgbByHex("#639");
+        $this->assertTrue($data->code==200);
+        $response   = json_decode($data->response);
+        $this->assertTrue($response->r==102);
+        $this->assertTrue($response->g==51);
+        $this->assertTrue($response->b==153);
+        
+    }
+    
+    public function testGetHexByRgb(){
+        $sca        = \KkuetNet\SharindataClientApi\Vendor\SharindataClientApi::getInstance(self::$apiKey, self::$apiSecret);
+        $data       = $sca->getHexByRgb(51,51,51);
+        $this->assertTrue($data->code==200);
+        $response   = json_decode($data->response);
+        $this->assertTrue($response->hex=="#333333");
+        
+        $data       = $sca->getHexByRgb(102,51,153);
+        $this->assertTrue($data->code==200);
+        $response   = json_decode($data->response);
+        $this->assertTrue($response->hex=="#663399");
+    }
 }
