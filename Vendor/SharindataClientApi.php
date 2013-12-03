@@ -4,13 +4,13 @@ namespace KkuetNet\SharindataClientApi\Vendor;
 
 class SharindataClientApi{
     
-//    public static $api_url                  = "http://sharindata.com/api/";
-//    public static $api_url_create_token     = "http://sharindata.com/api/token/";
-//    public static $api_url_destroy_token    = "http://sharindata.com/api/token/destroy";
+    public static $api_url                  = "http://sharindata.com/api/";
+    public static $api_url_create_token     = "http://sharindata.com/api/token/";
+    public static $api_url_destroy_token    = "http://sharindata.com/api/token/destroy";
     
-    public static $api_url                  = "http://www.sharindata.local/app_dev.php/api/";
-    public static $api_url_create_token     = "http://www.sharindata.local/app_dev.php/api/token/";
-    public static $api_url_destroy_token    = "http://www.sharindata.local/app_dev.php/api/token/destroy";
+//    public static $api_url                  = "http://www.sharindata.local/app_dev.php/api/";
+//    public static $api_url_create_token     = "http://www.sharindata.local/app_dev.php/api/token/";
+//    public static $api_url_destroy_token    = "http://www.sharindata.local/app_dev.php/api/token/destroy";
     
     private $apiKey                         = null;
     private $apiSecret                      = null;
