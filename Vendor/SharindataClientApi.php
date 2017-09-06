@@ -4,9 +4,9 @@ namespace KkuetNet\SharindataClientApi\Vendor;
 
 class SharindataClientApi{
     
-    public static $api_url                  = "http://sharindata.com/api/";
-    public static $api_url_create_token     = "http://sharindata.com/api/token/";
-    public static $api_url_destroy_token    = "http://sharindata.com/api/token/destroy";
+    public static $api_url                  = "http://sharindata.anthonykgross.fr/api/";
+    public static $api_url_create_token     = "http://sharindata.anthonykgross.fr/api/token/";
+    public static $api_url_destroy_token    = "http://sharindata.anthonykgross.fr/api/token/destroy";
     
 //    public static $api_url                  = "http://www.sharindata.local/app_dev.php/api/";
 //    public static $api_url_create_token     = "http://www.sharindata.local/app_dev.php/api/token/";
