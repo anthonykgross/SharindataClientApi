@@ -27,6 +27,17 @@ class BasicCurl {
         return $this->_execute($response);
     }
 
+    public function doCustom($action, $url, $params) {
+        $params['headers'] = $this->headers;
+
+        $response = $this->ressource->request(
+            $action,
+            $url,
+            $params
+        );
+        return $this->_execute($response);
+    }
+
     public function doGet($url) {
         $response = $this->ressource->request(
             'GET',
