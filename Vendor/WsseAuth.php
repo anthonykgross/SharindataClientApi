@@ -2,26 +2,23 @@
 
 namespace KkuetNet\SharindataClientApi\Vendor;
 
+use GuzzleHttp\Client;
+
 class WsseAuth{
 
     public static function getToken($url){
-        $ressource = curl_init();
-        curl_setopt($ressource, CURLOPT_URL, $url);
-        curl_setopt($ressource, CURLOPT_POST, true);
-        curl_setopt($ressource, CURLOPT_POSTFIELDS, array());
-        curl_setopt($ressource, CURLOPT_HTTPHEADER, array(
-            'Accept: application/json',
-            'Content-Type: application/json',
-        ));
-        curl_setopt($ressource, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($ressource);
-        $response = json_decode($response);
 
-        $token = null;
-        if(isset($response->WSSE)){
-            $token = $response->WSSE;
+        $client = new Client();
+        $response = $client->request('POST', $url, array(
+            'headers' => array(
+                'Accept: application/json',
+                'Content-Type: application/json',
+            )
+        ));
+        $token = json_decode($response->getBody()->getContents(), true);
+        if (array_key_exists('WSSE', $token)) {
+            return $token['WSSE'];
         }
-        return $token;
     }
 }
 ?>
