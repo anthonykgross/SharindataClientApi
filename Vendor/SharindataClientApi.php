@@ -8,9 +8,9 @@ class SharindataClientApi{
     public static $api_url_create_token     = "http://sharindata.anthonykgross.fr/api/token/";
     public static $api_url_destroy_token    = "http://sharindata.anthonykgross.fr/api/token/destroy";
     
-//    public static $api_url                  = "http://www.sharindata.local/app_dev.php/api/";
-//    public static $api_url_create_token     = "http://www.sharindata.local/app_dev.php/api/token/";
-//    public static $api_url_destroy_token    = "http://www.sharindata.local/app_dev.php/api/token/destroy";
+//    public static $api_url                  = "http://localhost/app_dev.php/api/";
+//    public static $api_url_create_token     = "http://localhost/app_dev.php/api/token/";
+//    public static $api_url_destroy_token    = "http://localhost/app_dev.php/api/token/destroy";
     
     private $apiKey                         = null;
     private $apiSecret                      = null;
@@ -32,8 +32,8 @@ class SharindataClientApi{
     
     public function refreshWsseToken(){
         $this->curl     = new \KkuetNet\SharindataClientApi\Vendor\BasicCurl(array(
-            'X-WSSE : '.\KkuetNet\SharindataClientApi\Vendor\WsseAuth::getToken(self::$api_url_create_token."?_apikey=".$this->apiKey."&_apisecret=".$this->apiSecret),
-            'Authorization : WSSE profile="UsernameToken"'
+            'X-WSSE' => \KkuetNet\SharindataClientApi\Vendor\WsseAuth::getToken(self::$api_url_create_token."?_apikey=".$this->apiKey."&_apisecret=".$this->apiSecret),
+            'Authorization' => 'WSSE profile="UsernameToken"'
         ));
     }
     

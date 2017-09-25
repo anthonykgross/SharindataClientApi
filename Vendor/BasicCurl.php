@@ -2,54 +2,69 @@
 
 namespace KkuetNet\SharindataClientApi\Vendor;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Response;
+
 class BasicCurl {
 
     private $ressource = null;
     private $headers   = array();
     
     public function __construct(Array $headers) {
-        $this->ressource    = curl_init();
+        $this->ressource    = new Client();
         $this->headers      = $headers;
-        
-        curl_setopt($this->ressource, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($this->ressource, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($this->ressource, CURLOPT_SSL_VERIFYPEER, false);
     }
     
     public function doPost($url, $paramsPost) {
-        curl_setopt($this->ressource, CURLOPT_URL, $url);
-        curl_setopt($this->ressource, CURLOPT_POST, true);
-        curl_setopt($this->ressource, CURLOPT_POSTFIELDS, $paramsPost);
-        return $this->_execute($this->ressource);
+        $response = $this->ressource->request(
+            'POST',
+            $url,
+            array(
+                'body' => $paramsPost,
+                'headers' => $this->headers
+            )
+        );
+        return $this->_execute($response);
     }
 
     public function doGet($url) {
-        curl_setopt($this->ressource, CURLOPT_URL, $url);
-        return $this->_execute($this->ressource);
+        $response = $this->ressource->request(
+            'GET',
+            $url,
+            array(
+                'headers' => $this->headers
+            )
+        );
+        return $this->_execute($response);
     }
 
     public function doPut($url, $params) {
-        curl_setopt($this->ressource, CURLOPT_URL, $url);
-        curl_setopt($this->ressource, CURLOPT_CUSTOMREQUEST, 'PUT');
-        curl_setopt($this->ressource, CURLOPT_POSTFIELDS, $params);
-        return $this->_execute($this->ressource);
+        $response = $this->ressource->request(
+            'PUT',
+            $url,
+            array(
+                'body' => $params,
+                'headers' => $this->headers
+            )
+        );
+        return $this->_execute($response);
     }
 
     public function doDelete($url) {
-        curl_setopt($this->ressource, CURLOPT_URL, $url);
-        curl_setopt($this->ressource, CURLOPT_CUSTOMREQUEST, 'DELETE');
-        return $this->_execute($this->ressource);
+        $response = $this->ressource->request(
+            'DELETE',
+            $url,
+            array(
+                'headers' => $this->headers
+            )
+        );
+        return $this->_execute($response);
     }
 
-    private function _execute() {
-        curl_setopt($this->ressource, CURLOPT_HTTPHEADER, $this->headers);
-
-        $response               = curl_exec($this->ressource);
-        $code                   = curl_getinfo($this->ressource, CURLINFO_HTTP_CODE);
-
+    private function _execute(Response $response) {
         $objResponse            = new \stdClass();
-        $objResponse->response  = $response;
-        $objResponse->code      = $code;
+        $objResponse->response  = $response->getBody()->getContents();
+        $objResponse->code      = $response->getStatusCode();
         return $objResponse;
     }
 }

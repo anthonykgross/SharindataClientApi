@@ -6,12 +6,15 @@
     "license": "Commercial",
     "authors": [
         {
-            "name": "Anthony GROSS",
-            "email": "anthony_gross@kkuet.net"
+            "name": "Anthony K GROSS",
+            "email": "anthony.k.gross@gmail.com"
         }
     ],
     "autoload": {
         "psr-0": { "KkuetNet\\SharindataClientApi": "" }
     },
-    "target-dir": "KkuetNet/SharindataClientApi"
+    "target-dir": "KkuetNet/SharindataClientApi",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    }
 }
