@@ -90,34 +90,41 @@ class SharindataClientApi{
          if(is_int($option)){
             $post['option'] = $option;
         }
-        return $this->curl->doPost(self::$api_url."tool/random/string", $post);
+        return $this->curl->doCustom('POST', self::$api_url."tool/random/string", array('form_params' => $post));
     }
     
     public function getAllColors($image_path){
-        $post = array('image' => '@'.$image_path);
-        return $this->curl->doPost(self::$api_url."tool/image/allcolors", $post);
+        $post = array(
+            array(
+                'name' => 'image',
+                'contents' => fopen($image_path, 'r')
+            )
+        );
+        return $this->curl->doCustom('POST', self::$api_url."tool/image/allcolors", array('multipart' => $post));
     }
-    
-    public function getMainsColors($image_path, $nbColor = null){
-        $post = array('image' => '@'.$image_path);
-        if($nbColor){
-            $post['nbColor'] = $nbColor;
-        }
-        return $this->curl->doPost(self::$api_url."tool/image/maincolors", $post);
+
+    public function getMainsColors($image_path){
+        $post = array(
+            array(
+                'name' => 'image',
+                'contents' => fopen($image_path, 'r')
+            )
+        );
+        return $this->curl->doCustom('POST', self::$api_url."tool/image/maincolors", array('multipart' => $post));
     }
-    
+
     public function getHexByRgb($r, $g, $b){
         $post = array('red' => $r, 'green' => $g, 'blue' => $b);
-        return $this->curl->doPost(self::$api_url."tool/color/rgbtohex", $post);
+        return $this->curl->doCustom('POST',self::$api_url."tool/color/rgbtohex", array('form_params' => $post));
     }
     
     public function getRgbByHex($hex){
         $post = array('hex' => $hex);
-        return $this->curl->doPost(self::$api_url."tool/color/hextorgb", $post);
+        return $this->curl->doCustom('POST',self::$api_url."tool/color/hextorgb", array('form_params' => $post));
     }
     
     public function getUserAgentDetails($user_agent){
         $post = array('user_agent' => $user_agent);
-        return $this->curl->doPost(self::$api_url."tool/useragent/details", $post);
+        return $this->curl->doPost('POST',self::$api_url."tool/useragent/details", $post);
     }
 }
